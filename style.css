@@ -1,0 +1,50 @@
+* {
+    margin: 0px;
+    font-family: sans-serif;    
+}
+
+body {
+    background-color:darkslategrey;
+}
+
+section {
+    width: 50vh;
+    height: 48vh;
+    background-color:mediumseagreen;
+    border-radius: 2vh;
+    margin: 1vh 2vh;
+    display: block;
+    justify-items: center;
+    align-content: center;
+    float: inline-start;
+}   
+
+img {
+    width: 30vh;
+    height: 25vh;
+    margin-left: 9.9vh;
+}
+
+h1 {
+    font-size: 3.5vh;
+    margin-top: 2vh;
+}
+
+h2 {
+    font-size: 3vh;
+    margin-bottom: 2vh;
+}
+
+#btncompra {
+    width: 25vh;
+    height: 8vh;
+    border: none;
+    border-radius: 1vh;
+    margin-left: 12vh;
+    cursor: pointer;
+    background-color:forestgreen;
+}
+
+#btncompra:hover {
+    background-color:#98a329;
+}
