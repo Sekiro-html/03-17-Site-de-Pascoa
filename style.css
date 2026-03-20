@@ -24,6 +24,18 @@ nav {
     top: 0;
 }
 
+#btnapagacompras {
+    width: 64px;
+    height: 64px;
+    background-image: url(./IMG/carrinho-de-compras.png);
+    border: none;
+    background-color: rgba(0, 0, 0, 0);
+    position: absolute;
+    margin-left: auto;
+    right: 0;
+    top: 0;
+}
+
 section {
     width: 50vh;
     height: 48vh;
