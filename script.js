@@ -63,3 +63,26 @@ function CriaContainer(onload) {
         btn.id = "btncompra"
     }
 }
+
+let btncarrinho = document.getElementById("btncarrinho");
+
+btncarrinho.addEventListener("click", () => {
+    let aside = document.createElement("div");
+    let body = document.getElementById("body");
+    let btnremove = document.createElement("input");
+
+    body.appendChild(aside);
+    aside.appendChild(btnremove);
+    aside.id = "animacao"
+    btnremove.id = "btnexclui"
+    btnremove.type = "button";
+
+
+    aside.classList.add("asidecarrinho");
+
+    let btnexclui = document.getElementById("btnexclui");
+
+    btnexclui.addEventListener("click", () => {
+        aside.remove();
+    })
+})
