@@ -49,8 +49,11 @@ function CriaContainer(onload) {
         let h1 = document.createElement("h1");
         let span = document.createElement("span");
         let btn = document.createElement("input");
+        let ncarac = i + "";
+        console.log(ncarac);
 
         main.appendChild(section);
+        section.id = "sectionovos" + ncarac;
         section.appendChild(img);
         section.appendChild(h1);
         section.appendChild(span);
@@ -60,29 +63,39 @@ function CriaContainer(onload) {
         span.innerText = container[i].preco;
         btn.type = "button";
         btn.value = "Comprar";
-        btn.id = "btncompra"
+        btn.id = "btncompra" + ncarac;   
+        
+
+        let btnovos = document.getElementById("btncompra" + ncarac);
+
+        console.log(btnovos);
+
+        btnovos.addEventListener("click", () => {
+            let guardaovos = document.querySelector("#sectionovos" + ncarac);
+            console.log(guardaovos);
+        });
     }
 }
 
-let btncarrinho = document.getElementById("btncarrinho");
+    let btncarrinho = document.getElementById("btncarrinho");
 
-btncarrinho.addEventListener("click", () => {
-    let aside = document.createElement("div");
-    let body = document.getElementById("body");
-    let btnremove = document.createElement("input");
+    btncarrinho.addEventListener("click", () => {
+        let aside = document.createElement("div");
+        let body = document.querySelector("#body");
+        let btnremove = document.createElement("input");
 
-    body.appendChild(aside);
-    aside.appendChild(btnremove);
-    aside.id = "animacao"
-    btnremove.id = "btnexclui"
-    btnremove.type = "button";
+        body.appendChild(aside);
+        aside.appendChild(btnremove);
+        aside.id = "animacao"
+        btnremove.id = "btnexclui"
+        btnremove.type = "button";
 
+        aside.classList.add("asidecarrinho");
 
-    aside.classList.add("asidecarrinho");
+        let btnexclui = document.getElementById("btnexclui");
 
-    let btnexclui = document.getElementById("btnexclui");
+        btnexclui.addEventListener("click", () => {
+            aside.remove();
+        })
 
-    btnexclui.addEventListener("click", () => {
-        aside.remove();
-    })
-})
+});

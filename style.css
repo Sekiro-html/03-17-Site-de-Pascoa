@@ -73,7 +73,77 @@ h2 {
     margin-bottom: 2vh;
 }
 
-#btncompra {
+#btncompra0 {
+    width: 25vh;
+    height: 8vh;
+    border: none;
+    border-radius: 1vh;
+    margin-left: 12vh;
+    cursor: pointer;
+    background-color:forestgreen;
+}
+
+#btncompra1 {
+    width: 25vh;
+    height: 8vh;
+    border: none;
+    border-radius: 1vh;
+    margin-left: 12vh;
+    cursor: pointer;
+    background-color:forestgreen;
+}
+
+#btncompra2 {
+    width: 25vh;
+    height: 8vh;
+    border: none;
+    border-radius: 1vh;
+    margin-left: 12vh;
+    cursor: pointer;
+    background-color:forestgreen;
+}
+
+#btncompra3 {
+    width: 25vh;
+    height: 8vh;
+    border: none;
+    border-radius: 1vh;
+    margin-left: 12vh;
+    cursor: pointer;
+    background-color:forestgreen;
+}
+
+#btncompra4 {
+    width: 25vh;
+    height: 8vh;
+    border: none;
+    border-radius: 1vh;
+    margin-left: 12vh;
+    cursor: pointer;
+    background-color:forestgreen;
+}
+
+#btncompra5 {
+    width: 25vh;
+    height: 8vh;
+    border: none;
+    border-radius: 1vh;
+    margin-left: 12vh;
+    cursor: pointer;
+    background-color:forestgreen;
+}
+
+#btncompra6 {
+    width: 25vh;
+    height: 8vh;
+    border: none;
+    border-radius: 1vh;
+    margin-left: 12vh;
+    cursor: pointer;
+    background-color:forestgreen;
+}
+
+#btncompra7 {
     width: 25vh;
     height: 8vh;
     border: none;
