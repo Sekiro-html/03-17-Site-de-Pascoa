@@ -25,13 +25,15 @@ nav {
 }
 
 #btnexclui {
-    width: 32px;
+    width: 100vh;
     height: 32px;
     background-image: url(./IMG/cross.png);
+    background-repeat: no-repeat;
     border: none;
     background-color: rgba(0, 0, 0, 0);
     margin-top: 10px;
     margin-left: 20px;
+    margin-bottom: 10px;
 }
 
 section {
@@ -53,7 +55,15 @@ section {
     background-color: chartreuse;
     right: 0;
     top: 0;
-    transition: transform 0.5s ease, opacity 0.5s ease;
+    overflow-y: auto;
+}
+
+#precoovos {
+    position:sticky;
+    bottom: 0;
+    font-size:xx-large;
+    font-weight: bold;
+    justify-self: center;
 }
 
 img {
@@ -153,6 +163,34 @@ h2 {
     background-color:forestgreen;
 }
 
-#btncompra:hover {
+#btncompra0:hover {
+    background-color:#98a329;
+}
+
+#btncompra1:hover {
+    background-color:#98a329;
+}
+
+#btncompra2:hover {
+    background-color:#98a329;
+}
+
+#btncompra3:hover {
+    background-color:#98a329;
+}
+
+#btncompra4:hover {
+    background-color:#98a329;
+}
+
+#btncompra5:hover {
+    background-color:#98a329;
+}
+
+#btncompra6:hover {
+    background-color:#98a329;
+}
+
+#btncompra7:hover {
     background-color:#98a329;
 }
