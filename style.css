@@ -59,11 +59,18 @@ section {
 }
 
 #precoovos {
-    position:sticky;
     bottom: 0;
     font-size:xx-large;
     font-weight: bold;
     justify-self: center;
+}
+
+#empurabtn {
+    margin-left: 20vh;
+}
+
+.Btnscount {
+    width: 4vh;
 }
 
 img {
