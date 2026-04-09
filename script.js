@@ -98,6 +98,14 @@ function CriaContainer(onload) {
                 let preco = container[i].preco;
 
 
+
+                let info = listadeovos.some(item => item.id === guardaovos.id)
+                console.log(info);
+                if (info === true) {
+                    event.preventDefault();
+                    guardaovos.quant = parseInt(guardaovos.quant) + 1;
+                    return
+                }
                 console.log(guardaovos)
                 CarrinhoID.push(guardaovos.id);
                 listapreco.push(preco.slice(3));
@@ -111,7 +119,7 @@ function CriaContainer(onload) {
 
         btnclick2.addEventListener("click", ClickAsideCria);
         
-    }
+    };
 }
 
 function ClickAsideCria() {
@@ -201,22 +209,28 @@ function ClickAsideCria() {
         aside.remove();
 });
 
+let btnclick2 = document.getElementById("btncompra" + i);
+
 btnclick2.removeEventListener("click", ClickAsideCria);
 
 btnclick2.addEventListener("click", ClickAsideRemove);
 };
 
 function ClickAsideRemove() {
+    for(let i = 0; i < container.length; i++) {
+    let btnclick2 = document.getElementById("btncompra" + i);
+
+        btnclick2.removeEventListener("click", ClickAsideRemove);
+
+    btnclick2.addEventListener("click", ClickAsideCria);
+
     let aside = document.getElementById("asideCarrinhoRemove");
 
     aside.remove();
-
-    btnclick2.removeEventListener("click", ClickAsideRemove);
-
-    btnclick2.addEventListener("click", ClickAsideCria);
+};
 };
 
-let btncarrinho = document.getElementById("btncarrinho");
+let btncarrinho = document.getElementById("btncarrinho"); 
 
 btncarrinho.addEventListener("click", () => {
     //Cria Aside
