@@ -1,12 +1,12 @@
 const container = [
-    { id: 1, Txt: "Ovo de Páscoa Lacta 170g",                        preco: "R$ 60.00",  img: "./IMG/Ovo_Ben_10.webp",                          quant: "1" },
-    { id: 2, Txt: "Ovo de Páscoa Nocciolate Lindt 350g",             preco: "R$ 75.00",  img: "./IMG/ovo-pascoa-choc-noccio-lindt-cx-350g-1.webp", quant: "1" },
-    { id: 3, Txt: "Ovo de Páscoa Chocolate Ao Leite HAVAN",          preco: "R$ 89.99",  img: "./IMG/OVOs HAVAN.webp",                          quant: "1" },
-    { id: 4, Txt: "Ovo de Páscoa Scooby-Doo 120g",                   preco: "R$ 42.66",  img: "./IMG/Scooby-Loo.webp",                          quant: "1" },
-    { id: 5, Txt: "Ovo de Páscoa de Chocolate com copo Enaldinho",   preco: "R$ 69.99",  img: "./IMG/Ovo-do-Enaldinho.webp",                    quant: "1" },
-    { id: 6, Txt: "Ovo de Páscoa de chocolate Tom e Jerry 80g",      preco: "R$ 22.90",  img: "./IMG/Tom-e-Jerry.webp",                         quant: "1" },
-    { id: 7, Txt: "Ovo de Pásco de Chocolate Luccas Neto 100g",      preco: "R$ 126.40", img: "./IMG/Ovo-Do-Lucas.webp",                        quant: "1" },
-    { id: 8, Txt: "Ovo de Páscoa de Chocolate Toc Mix 50g",          preco: "R$ 10.99",  img: "./IMG/Ovo-Joy.webp",                             quant: "1" },
+    { id: 1, Txt: "Ovo de Páscoa Lacta 170g",                        preco: "60.00",  img: "./IMG/Ovo_Ben_10.webp",                          quant: "1" },
+    { id: 2, Txt: "Ovo de Páscoa Nocciolate Lindt 350g",             preco: "75.00",  img: "./IMG/ovo-pascoa-choc-noccio-lindt-cx-350g-1.webp", quant: "1" },
+    { id: 3, Txt: "Ovo de Páscoa Chocolate Ao Leite HAVAN",          preco: "89.99",  img: "./IMG/OVOs HAVAN.webp",                          quant: "1" },
+    { id: 4, Txt: "Ovo de Páscoa Scooby-Doo 120g",                   preco: "42.66",  img: "./IMG/Scooby-Loo.webp",                          quant: "1" },
+    { id: 5, Txt: "Ovo de Páscoa de Chocolate com copo Enaldinho",   preco: "69.99",  img: "./IMG/Ovo-do-Enaldinho.webp",                    quant: "1" },
+    { id: 6, Txt: "Ovo de Páscoa de chocolate Tom e Jerry 80g",      preco: "22.90",  img: "./IMG/Tom-e-Jerry.webp",                         quant: "1" },
+    { id: 7, Txt: "Ovo de Pásco de Chocolate Luccas Neto 100g",      preco: "126.40", img: "./IMG/Ovo-Do-Lucas.webp",                        quant: "1" },
+    { id: 8, Txt: "Ovo de Páscoa de Chocolate Toc Mix 50g",          preco: "10.99",  img: "./IMG/Ovo-Joy.webp",                             quant: "1" },
 ];
 
 
@@ -59,19 +59,16 @@ function CriaContainer(onload) {
             let info = listadeovos.some(item => item.id === guardaovos.id);
             console.log(info);
 
-            if (info === true) {
-                event.preventDefault();
-                
-                return;
-            }
-
-
             console.log(guardaovos);
+            quantovos.push(guardaovos.id);
             listapreco.push(preco.slice(3));
             listadeovos.push(guardaovos);
 
-            let quant = 1;
-            quant++;
+            const contagem = quantovos.reduce((acc, item) => {
+                acc[item] = (acc[item] || 0) + 1;
+                return acc;
+            }, {});
+            console.log(contagem);
         });
         
         let btnclick2 = document.getElementById("btncompra" + ncarac);
@@ -86,8 +83,7 @@ function ClickAsideCria() {
     let AsideExistente = document.getElementById("asideCarrinhoRemove");
 
     if(AsideExistente) {
-        AsideExistente.remove()
-        return
+        AsideExistente.remove();
     }
     
     let aside     = document.createElement("div");
@@ -134,7 +130,7 @@ function ClickAsideCria() {
         span.id        = "precoovo" + ncarac;
 
         contador.type  = "Text";
-        contador.value = listadeovos[i].quant;
+        contador.value = quantovos[i];
         contador.classList.add("Btnscount");
 
         btn1.type  = "button";
@@ -156,7 +152,7 @@ function ClickAsideCria() {
 
 
         document.getElementById("AddBtn" + ncarac).addEventListener("click", () => {
-            let quant    = parseInt(contador.value);
+            let quant      = parseInt(contador.value);
             quant++;
             contador.value = quant;
             quantovos.push(contador.value);
