@@ -14,13 +14,13 @@ const listadeovos   = [];
 const listapreco    = []; 
 const quantcarrinho = [];
 const quantovos     = [];
+const carrinho      = [];
 
 
 
 function CriaContainer(onload) {
     for (let i = 0; i < container.length; i++) {
         let ncarac = i + "";
-
 
         let main    = document.getElementById("main");
         let section = document.createElement("section");
@@ -57,9 +57,7 @@ function CriaContainer(onload) {
 
 
             let info = listadeovos.some(item => item.id === guardaovos.id);
-            console.log(info);
 
-            console.log(guardaovos);
             quantovos.push(guardaovos.id);
             listapreco.push(preco.slice(3));
             listadeovos.push(guardaovos);
@@ -69,6 +67,8 @@ function CriaContainer(onload) {
                 return acc;
             }, {});
             console.log(contagem);
+
+            quantcarrinho.push(contagem);
         });
         
         let btnclick2 = document.getElementById("btncompra" + ncarac);
@@ -81,6 +81,10 @@ function CriaContainer(onload) {
 
 function ClickAsideCria() {
     let AsideExistente = document.getElementById("asideCarrinhoRemove");
+
+    const OvosUnicos = listadeovos.filter((item, index) => listadeovos.indexOf(item) === index);
+    carrinho.push(OvosUnicos);
+    console.log(carrinho);
 
     if(AsideExistente) {
         AsideExistente.remove();
@@ -101,6 +105,7 @@ function ClickAsideCria() {
 
 
     for (let i = 0; i < listadeovos.length; i++) {
+        
         let ncarac   = i + "";
         let add      = 1;
 
@@ -124,13 +129,13 @@ function ClickAsideCria() {
         section.appendChild(btn2);
 
 
-        img.src        = listadeovos[i].img;
-        h1.innerText   = listadeovos[i].Txt;
-        span.innerText = listadeovos[i].preco;
+        img.src        = carrinho[i].img;
+        h1.innerText   = carrinho[i].Txt;
+        span.innerText = carrinho[i].preco;
         span.id        = "precoovo" + ncarac;
 
         contador.type  = "Text";
-        contador.value = quantovos[i];
+        contador.value = carrinho[i].quant;
         contador.classList.add("Btnscount");
 
         btn1.type  = "button";
@@ -152,13 +157,15 @@ function ClickAsideCria() {
 
 
         document.getElementById("AddBtn" + ncarac).addEventListener("click", () => {
-            let quant      = parseInt(contador.value);
-            quant++;
-            contador.value = quant;
-            quantovos.push(contador.value);
+            for(let i = 0; i < container.length; i++) {
+                let ncarac     = i + ""
+                let quant      = parseInt(contador.value);
+                quant++;
+                contador.value = quant;
 
-            let novasoma = quant * parseInt(soma);
-            preco.innerText = "R$" + novasoma;
+                let novasoma = quant * parseInt(soma);
+                preco.innerText = "R$" + novasoma;
+            }
         });
 
 
@@ -166,7 +173,11 @@ function ClickAsideCria() {
             let quant    = parseInt(contador.value);
             quant--;
             contador.value = quant;
-            quantovos.push(contador.value);
+            if (contador.value = 0) {
+                let section = document.getElementById("sectionovos" + ncarac);
+                section.remove();
+                return;
+            };
 
             let novasoma = quant / parseInt(soma);
             preco.innerText = "R$" + novasoma;
