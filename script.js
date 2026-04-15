@@ -66,9 +66,8 @@ function CriaContainer(onload) {
                 acc[item] = (acc[item] || 0) + 1;
                 return acc;
             }, {});
-            console.log(contagem);
 
-            quantcarrinho.push(contagem);
+ 
         });
         
         let btnclick2 = document.getElementById("btncompra" + ncarac);
@@ -214,10 +213,10 @@ btncarrinho.addEventListener("click", () => {
     btnremove.type = "button";
     aside.id       = "asideCarrinhoRemove";
 
-
-    for (let i = 0; i < listadeovos.length; i++) {
+    const OvosUnicos = listadeovos.filter((item, index) => listadeovos.indexOf(item) === index);
+    
+    for (let i = 0; i < OvosUnicos.length; i++) {
         let ncarac   = i + "";
-        let add      = 1;
 
         let section  = document.createElement("section");
         let img      = document.createElement("img");
@@ -239,13 +238,13 @@ btncarrinho.addEventListener("click", () => {
         section.appendChild(btn2);
 
 
-        img.src        = listadeovos[i].img;
-        h1.innerText   = listadeovos[i].Txt;
-        span.innerText = listadeovos[i].preco;
+        img.src        = OvosUnicos[i].img;
+        h1.innerText   = OvosUnicos[i].Txt;
+        span.innerText = OvosUnicos[i].preco;
         span.id        = "precoovo" + ncarac;
 
         contador.type  = "Text";
-        contador.value = container[i].quant;
+        contador.value = OvosUnicos[i].quant;
         contador.classList.add("Btnscount");
 
         btn1.type  = "button";
