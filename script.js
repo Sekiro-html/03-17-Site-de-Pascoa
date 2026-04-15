@@ -83,8 +83,6 @@ function ClickAsideCria() {
     let AsideExistente = document.getElementById("asideCarrinhoRemove");
 
     const OvosUnicos = listadeovos.filter((item, index) => listadeovos.indexOf(item) === index);
-    carrinho.push(OvosUnicos);
-    console.log(carrinho);
 
     if(AsideExistente) {
         AsideExistente.remove();
@@ -104,7 +102,7 @@ function ClickAsideCria() {
     btnremove.type = "button";
 
 
-    for (let i = 0; i < listadeovos.length; i++) {
+    for (let i = 0; i < OvosUnicos.length; i++) {
         
         let ncarac   = i + "";
         let add      = 1;
@@ -129,13 +127,13 @@ function ClickAsideCria() {
         section.appendChild(btn2);
 
 
-        img.src        = carrinho[i].img;
-        h1.innerText   = carrinho[i].Txt;
-        span.innerText = carrinho[i].preco;
+        img.src        = OvosUnicos[i].img;
+        h1.innerText   = OvosUnicos[i].Txt;
+        span.innerText = OvosUnicos[i].preco;
         span.id        = "precoovo" + ncarac;
 
         contador.type  = "Text";
-        contador.value = carrinho[i].quant;
+        contador.value = OvosUnicos[i].quant;
         contador.classList.add("Btnscount");
 
         btn1.type  = "button";
@@ -157,26 +155,28 @@ function ClickAsideCria() {
 
 
         document.getElementById("AddBtn" + ncarac).addEventListener("click", () => {
-            for(let i = 0; i < container.length; i++) {
-                let ncarac     = i + ""
                 let quant      = parseInt(contador.value);
+                console.log(quant);
                 quant++;
                 contador.value = quant;
 
                 let novasoma = quant * parseInt(soma);
                 preco.innerText = "R$" + novasoma;
-            }
         });
 
 
         document.getElementById("DiscountBtn" + ncarac).addEventListener("click", () => {
-            let quant    = parseInt(contador.value);
-            quant--;
-            contador.value = quant;
-            if (contador.value = 0) {
-                let section = document.getElementById("sectionovos" + ncarac);
-                section.remove();
-                return;
+                let quant    = parseInt(contador.value);
+                console.log(quant);
+                quant--;
+                console.log(quant);
+                contador.value = quant;
+                if (contador.value = 0) {
+                    for(let i = 0; i < container.length; i++) {
+                    let section = document.getElementById("sectionovos" + ncarac);
+                    section.remove();
+                    return;
+                }
             };
 
             let novasoma = quant / parseInt(soma);
