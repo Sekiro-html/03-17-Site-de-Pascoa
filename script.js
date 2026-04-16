@@ -1,12 +1,12 @@
 const container = [
-    { id: 1, Txt: "Ovo de Páscoa Lacta 170g",                        preco: "60.00",  img: "./IMG/Ovo_Ben_10.webp",                          quant: "1" },
+    { id: 1, Txt: "Ovo de Páscoa Lacta 170g",                        preco: "60.00",  img: "./IMG/Ovo_Ben_10.webp",                             quant: "1" },
     { id: 2, Txt: "Ovo de Páscoa Nocciolate Lindt 350g",             preco: "75.00",  img: "./IMG/ovo-pascoa-choc-noccio-lindt-cx-350g-1.webp", quant: "1" },
-    { id: 3, Txt: "Ovo de Páscoa Chocolate Ao Leite HAVAN",          preco: "89.99",  img: "./IMG/OVOs HAVAN.webp",                          quant: "1" },
-    { id: 4, Txt: "Ovo de Páscoa Scooby-Doo 120g",                   preco: "42.66",  img: "./IMG/Scooby-Loo.webp",                          quant: "1" },
-    { id: 5, Txt: "Ovo de Páscoa de Chocolate com copo Enaldinho",   preco: "69.99",  img: "./IMG/Ovo-do-Enaldinho.webp",                    quant: "1" },
-    { id: 6, Txt: "Ovo de Páscoa de chocolate Tom e Jerry 80g",      preco: "22.90",  img: "./IMG/Tom-e-Jerry.webp",                         quant: "1" },
-    { id: 7, Txt: "Ovo de Pásco de Chocolate Luccas Neto 100g",      preco: "126.40", img: "./IMG/Ovo-Do-Lucas.webp",                        quant: "1" },
-    { id: 8, Txt: "Ovo de Páscoa de Chocolate Toc Mix 50g",          preco: "10.99",  img: "./IMG/Ovo-Joy.webp",                             quant: "1" },
+    { id: 3, Txt: "Ovo de Páscoa Chocolate Ao Leite HAVAN",          preco: "89.99",  img: "./IMG/OVOs HAVAN.webp",                             quant: "1" },
+    { id: 4, Txt: "Ovo de Páscoa Scooby-Doo 120g",                   preco: "42.66",  img: "./IMG/Scooby-Loo.webp",                             quant: "1" },
+    { id: 5, Txt: "Ovo de Páscoa de Chocolate com copo Enaldinho",   preco: "69.99",  img: "./IMG/Ovo-do-Enaldinho.webp",                       quant: "1" },
+    { id: 6, Txt: "Ovo de Páscoa de chocolate Tom e Jerry 80g",      preco: "22.90",  img: "./IMG/Tom-e-Jerry.webp",                            quant: "1" },
+    { id: 7, Txt: "Ovo de Pásco de Chocolate Luccas Neto 100g",      preco: "126.40", img: "./IMG/Ovo-Do-Lucas.webp",                           quant: "1" },
+    { id: 8, Txt: "Ovo de Páscoa de Chocolate Toc Mix 50g",          preco: "10.99",  img: "./IMG/Ovo-Joy.webp",                                quant: "1" },
 ];
 
 
@@ -59,13 +59,14 @@ function CriaContainer(onload) {
             let info = listadeovos.some(item => item.id === guardaovos.id);
 
             quantovos.push(guardaovos.id);
-            listapreco.push(preco.slice(3));
             listadeovos.push(guardaovos);
 
             const contagem = quantovos.reduce((acc, item) => {
                 acc[item] = (acc[item] || 0) + 1;
                 return acc;
             }, {});
+
+            quantcarrinho.push(Number(contagem[guardaovos.id]));
 
  
         });
@@ -82,6 +83,10 @@ function ClickAsideCria() {
     let AsideExistente = document.getElementById("asideCarrinhoRemove");
 
     const OvosUnicos = listadeovos.filter((item, index) => listadeovos.indexOf(item) === index);
+    const contagem   = [quantovos.reduce((acc, item) => {
+        acc[item]    = (acc[item] || 0) + 1;
+        return acc;
+    }, {})];
 
     if(AsideExistente) {
         AsideExistente.remove();
@@ -91,7 +96,6 @@ function ClickAsideCria() {
     let body      = document.querySelector("#body");
     let btnremove = document.createElement("input");
     let numbpreco = document.createElement("span");
-    let soma      = 0;
 
 
     body.appendChild(aside);
@@ -145,8 +149,9 @@ function ClickAsideCria() {
         btn2.classList.add("Btnscount");
         btn2.id = "AddBtn" + ncarac;
 
+        let soma = 0;
 
-        soma += parseFloat(listapreco[i]);
+        soma += parseFloat(OvosUnicos[i].preco);
 
         aside.appendChild(numbpreco);
         numbpreco.innerText = "R$" + soma;
