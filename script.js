@@ -41,12 +41,13 @@ function CriaContainer(onload) {
 
         img.src        = container[i].img;
         h1.innerText   = container[i].Txt;
-        span.innerText = container[i].preco;
+        span.innerText = "R$" + container[i].preco;
         span.id        = "precoovo" + ncarac;
 
         btn.type  = "button";
         btn.value = "Comprar";
         btn.id    = "btncompra" + ncarac;
+        btn.classList.add("BtnCompraClass");
 
 
         let btnovos = document.getElementById("btncompra" + ncarac);
@@ -96,7 +97,7 @@ function ClickAsideCria() {
     let body      = document.querySelector("#body");
     let btnremove = document.createElement("input");
     let numbpreco = document.createElement("span");
-
+    let soma = 0;
 
     body.appendChild(aside);
     aside.appendChild(btnremove);
@@ -132,7 +133,7 @@ function ClickAsideCria() {
 
         img.src        = OvosUnicos[i].img;
         h1.innerText   = OvosUnicos[i].Txt;
-        span.innerText = OvosUnicos[i].preco;
+        span.innerText = "R$" + OvosUnicos[i].preco;
         span.id        = "precoovo" + ncarac;
 
         contador.type  = "Text";
@@ -149,7 +150,6 @@ function ClickAsideCria() {
         btn2.classList.add("Btnscount");
         btn2.id = "AddBtn" + ncarac;
 
-        let soma = 0;
 
         soma += parseFloat(OvosUnicos[i].preco);
 
@@ -245,7 +245,7 @@ btncarrinho.addEventListener("click", () => {
 
         img.src        = OvosUnicos[i].img;
         h1.innerText   = OvosUnicos[i].Txt;
-        span.innerText = OvosUnicos[i].preco;
+        span.innerText = "R$" + OvosUnicos[i].preco;
         span.id        = "precoovo" + ncarac;
 
         contador.type  = "Text";
@@ -263,7 +263,7 @@ btncarrinho.addEventListener("click", () => {
         btn2.id = "AddBtn" + ncarac;
 
 
-        soma += parseFloat(listapreco[i]);
+        soma += parseFloat(OvosUnicos[i].preco);
 
         aside.appendChild(preco);
         preco.innerText = "R$" + soma;
