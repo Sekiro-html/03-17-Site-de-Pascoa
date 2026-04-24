@@ -122,6 +122,7 @@ function ClickAsideCria() {
 
         aside.appendChild(section);
         section.id = "sectionovos" + ncarac;
+        section.classList.add("SectionAside")
 
         section.appendChild(img);
         section.appendChild(h1);
